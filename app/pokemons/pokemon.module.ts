@@ -10,6 +10,10 @@ import {PokemonsService} from "./pokemons.service";
 import { FormsModule }   from '@angular/forms';
 import { EditPokemonComponent }   from './edit-pokemon.component';
 import { PokemonFormComponent }   from './pokemon-form.component';
+import { PokemonSearchComponent } from '../pokemon-search.component'; // importez ceci ...
+import { LoaderComponent }        from './loader.component'; // ajouter ceci ...
+
+
 
 @NgModule({
     imports: [
@@ -23,7 +27,9 @@ import { PokemonFormComponent }   from './pokemon-form.component';
         ShadowCardDirective,
         PokemonTypeColorPipe,
         EditPokemonComponent,
-        PokemonFormComponent
+        PokemonFormComponent,
+        PokemonSearchComponent,
+        LoaderComponent
     ],
     providers: [PokemonsService]
 })

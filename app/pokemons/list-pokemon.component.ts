@@ -11,6 +11,9 @@ import { PokemonsService } from './pokemons.service';
     template: `<h1 class='center'>Pokémons</h1>
     <div class='container'>
         <div class="row">
+            
+            <pokemon-search></pokemon-search>
+
             <div *ngFor='let pokemon of pokemons' class="col s6 m4">
                 <div class="card horizontal" (click)="selectPokemon(pokemon)" pkmn-shadow-card>
                     <div class="card-image">
@@ -41,11 +44,11 @@ export class ListPokemonComponent implements OnInit {
     }
 
     getPokemons():void{
-        this.pokemons = this.pokemonService.getPokemons();
+        this.pokemonService.getPokemons().then(pokemons => this.pokemons=pokemons);
     }
 
     selectPokemon(pokemon: Pokemon){
-        console.log('Vous avez selectionné ' + pokemon.name);
+        console.log('Vous avez sélectionné ' + pokemon.name);
         let link = ['/pokemon', pokemon.id];
         this.router.navigate(link);
 

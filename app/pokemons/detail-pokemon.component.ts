@@ -51,13 +51,14 @@ import {PokemonsService} from "./pokemons.service";
             </div>
         </div>
     </div>
-    <h4 *ngIf='!pokemon' class="center">Aucun pokémon à afficher !</h4>`,
+    <h4 *ngIf='!pokemon' class="center">
+        <pkmn-loader></pkmn-loader>
+    </h4>`,
 
 })
 
 export class DetailPokemonComponent implements OnInit {
 
-    pokemons: Pokemon[] = null; // liste des pokémons de notre application
     pokemon: Pokemon = null; // pokémon à afficher dans le template
 
     constructor(private route: ActivatedRoute, private router: Router, private pokemonsService : PokemonsService) {}
@@ -67,7 +68,7 @@ export class DetailPokemonComponent implements OnInit {
 
         this.route.params.forEach((params: Params) => {
             let id = +params['id'];
-            this.pokemon = this.pokemonsService.getPokemon(id); // on utilise le service pour récupérer un pokémon en fonction de son identifiant.
+            this.pokemonsService.getPokemon(id).then(pokemon => this.pokemon = pokemon); // on utilise le service pour récupérer un pokémon en fonction de son identifiant.
         });
     }
 
