@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {Title} from "@angular/platform-browser";
 
 @Component({
     selector: 'pokemon-app',
@@ -12,4 +13,10 @@ import { Component } from '@angular/core';
     <!-- Contenu des composants -->
     <router-outlet></router-outlet>`
 })
-export class AppComponent {}
+export class AppComponent {
+    public constructor(private titleService: Title ) { }
+
+    public modifierTitre(nouveauTitre: string) {
+        this.titleService.setTitle(nouveauTitre);
+    }
+}

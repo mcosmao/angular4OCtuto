@@ -11,7 +11,9 @@ import { FormsModule }   from '@angular/forms';
 import { EditPokemonComponent }   from './edit-pokemon.component';
 import { PokemonFormComponent }   from './pokemon-form.component';
 import { PokemonSearchComponent } from '../pokemon-search.component'; // importez ceci ...
-import { LoaderComponent }        from './loader.component'; // ajouter ceci ...
+import { LoaderComponent }        from './loader.component';
+import {AuthGuard} from "../auth-guard.service"; // ajouter ceci ...
+
 
 
 
@@ -31,6 +33,6 @@ import { LoaderComponent }        from './loader.component'; // ajouter ceci ...
         PokemonSearchComponent,
         LoaderComponent
     ],
-    providers: [PokemonsService]
+    providers: [PokemonsService, AuthGuard]
 })
 export class PokemonsModule {}
